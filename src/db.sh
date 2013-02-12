@@ -426,17 +426,3 @@ function main() {
 }
 
 main $*
-
-
-
-# différent cas : 
-# une migration dans un fichier n'est pas passée (pending)
-# une version de migration ne correspond pas à un fichier existant
-# tout est uptodate.
-
-#Pour passer une migration : 
-#trouver les pendings
-#les ordonners, du plus vieux au plus récent
-#les passer un par un, avec arrêt dès la première erreur (rollback)
-#pour chaque migration réussi inscrire la version dans la base.
-
