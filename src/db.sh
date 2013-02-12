@@ -41,7 +41,7 @@ SYNOPSYS
        $0 [options] -d database [-h hostname] command 
 
 DESCRIPTION 
-       Bash_migration is inspired from rake db:migrate command in Ruby On Rails.
+       db-migrate is inspired from rake db:migrate command in Ruby On Rails.
        It enables perform migrating and rollbacking a script on a given database.
 
        -u, --user=name     
