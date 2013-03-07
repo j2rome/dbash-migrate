@@ -93,7 +93,7 @@ function migration_file_lookup_at() {
 # Ex: /home/john/db/migrate/20120704155915_foo.sh -> 20120704155915_foo
 function version_migration_name() {
     declare files="$1"
-    basename -a $files | sed  s'/\.sh//'  | sort -n
+    basename $files | sed  s'/\.sh//'  | sort -n
 }
 
 function connect() 
@@ -154,7 +154,15 @@ function create() {
 }
 
 function drop() {
-    	connect -e "DROP DATABASE $database";
+    
+        echo -n "Really (YES/NO) NO ? "
+	read response
+	if [ -n "$response" -a "$response" = "YES" ]
+	then
+    	    connect -e "DROP DATABASE $database" && echo "Database dropped!"
+	else 
+	    echo "Aborted"
+	fi
 }
 
 function display_pending_migrations() {
@@ -372,7 +380,7 @@ function parse_arguments() {
 	case "$1" in
 	    
 	    -p|--password)
-		db_credentials="$db_credentials -p $2"
+		db_credentials="$db_credentials -p$2"
 		shift
 		;;
 	    -u|--username)
