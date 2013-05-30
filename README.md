@@ -1,9 +1,9 @@
 SUMMARY
 -------
 
-db-migrate is a tool which performs migration tasks like rake db:migrate command in Ruby.
+dbash-migrate is a tool which performs migration tasks like rake db:migrate command in Ruby.
 
-db-migrate is a database versionning and migration tool inspired from Rails migrations.
+dbash-migrate is a database versionning and migration tool inspired from Rails migrations.
 This tool enables to manage and track database schema changes.
 
 Rake (db:migrate task) is a powerful tool to perform database migration, but we have to installed Ruby and Rake on your host. 
