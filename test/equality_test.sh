@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/bash
 # file: examples/equality_test.sh
 #load sut
 

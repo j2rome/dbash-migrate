@@ -78,7 +78,12 @@ declare program_name=$0
 
 function migration_lookup_at() {
     declare dirname=$1
-    find $dirname -name "[0-9]*_*.sh" | sort -n
+    if [ -d $dirname ];
+    then
+        find $dirname -name "[0-9]*_*.sh" | sort -n
+    fi
+    return 1
+    
 }
 
 function migration_file_lookup_at() {
