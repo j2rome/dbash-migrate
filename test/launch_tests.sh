@@ -1,14 +1,20 @@
 #!/bin/bash
 # file: examples/equality_test.sh
-#load sut
 
-file_to_test='../src/db.sh'
-sut=`mktemp`
+temporary_file_to_test=`mktemp`
 
-# removing main call to import file without executing it
-sed -e 's/^main.*//g' $file_to_test > $sut 
-# source it
-source $sut
+removing_main_call() {
+  local file_to_test='../src/db.sh'
+  sed -e 's/^main.*//g' $file_to_test > ${temporary_file_to_test} 
+  source ${temporary_file_to_test}
+}
+removing_main_call
+
+#testCheckBinaryIsNotFound()
+#{
+#    result="`PATH= main`"
+#    assertEquals "Should display usage" "`usage_without_binary`" "$result" 
+#}
 
 testDisplayUsageIfNoArgProvidedOnCli()
 {
@@ -32,7 +38,7 @@ testDisplayNothingIfUnknownCommand()
 
 testSearchMigrationFiles() 
 {
-    migration_lookup_at "missing_dir" 2> /dev/null
+    migration_lookup_at "missing_dir" #2> /dev/null
     result=$?
     assertFalse "Should be false with missing directory" $result
 }
@@ -47,3 +53,5 @@ testEquality()
 
 # load shunit2
 . lib/shunit2
+rm ${temporary_file_to_test}
+
